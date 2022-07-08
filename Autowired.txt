@@ -1,0 +1,75 @@
+inject dependencies without configuration in xml file
+
+we can use autowire in xml file or by using annotation in java class itself
+
+to use annotation we need to put <context:annotation-config/> in xml file
+
+After enabling @Autowired annotation and deciding on what configuration to be used. The beans can be wired via constructor or properties or setter method. For example, there are two POJO classes Customer and Person. The Customer class has a dependency on the Person.
+
+Different types :
+byName
+byType
+byConstructor etc
+
+Customer.java
+
+@Component
+public class Customer {
+
+    private int type;
+    private Person person;
+    
+    // Constructors
+    // getters and setter
+}
+Person.java
+
+public class Person {
+    private String name;
+    private String age;
+    
+    // Constructors
+    // getters and setters
+}
+Constructor based Autowiring 
+
+@Autowired annotation is optional for constructor based injection. Here, the person object from the container is passed to the constructor while creating the Customer object.
+
+@Component
+public class Customer {
+
+    private int type;
+    private Person person;
+
+    public Customer() {
+    }
+
+    @Autowired
+    public Customer(Person person) {
+        this.person = person;
+    }
+}
+Property-based Autowiring
+
+The person object will be injected into the property person at run time using @Autowired annotation
+
+@Component
+public class Customer {
+
+    private int type;
+
+    @Autowired
+    private Person person;
+}
+Setter based Autowiring
+
+The setter method will be called with the Person object at runtime by the container.
+
+@Autowired
+public void setPerson(Person person) {
+    this.person = person;
+}
+
+
+
+
