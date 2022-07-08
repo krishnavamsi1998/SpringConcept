@@ -1,0 +1,124 @@
+-To avoid depedencies (if we depend on oher class ) we use dependecy injection
+
+-To avoid Tight coupling we use dependency injecion
+
+It can be done in 2 ways :
+
+1. using setter injection
+2. using constructor injection
+
+setting literal values using setter method:
+
+we can inject literal values by using property tag in xml file
+
+ex:
+
+<property name="studentid" value="vamsi"/>
+
+using constructor injection:
+
+instead of setter method , we can use costructor so that spring can use this constructor
+for dependency injection
+
+ex:
+
+<constructor-arg name="studentid" value="vamsi"/>
+
+ using setter injection example:
+
+public class Employee {  
+private int id;  
+private String name;  
+private String city;  
+  
+public int getId() {  
+    return id;  
+}  
+public void setId(int id) {  
+    this.id = id;  
+}  
+public String getName() {  
+    return name;  
+}  
+public void setName(String name) {  
+    this.name = name;  
+}  
+  
+public String getCity() {  
+    return city;  
+}  
+public void setCity(String city) {  
+    this.city = city;  
+}  
+void display(){  
+    System.out.println(id+" "+name+" "+city);  
+}  
+  
+}  
+
+applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+<bean id="obj" class="com.javatpoint.Employee">  
+<property name="id">  
+<value>20</value>  
+</property>  
+<property name="name">  
+<value>Arun</value>  
+</property>  
+<property name="city">  
+<value>ghaziabad</value>  
+</property>  
+  
+</bean>  
+  
+</beans>  
+Test.java
+This class gets the bean from the applicationContext.xml file and calls the display method.
+
+package com.javatpoint;  
+  
+import org.springframework.beans.factory.BeanFactory;  
+import org.springframework.beans.factory.xml.XmlBeanFactory;  
+import org.springframework.core.io.*;  
+  
+public class Test {  
+    public static void main(String[] args) {  
+          
+        Resource r=new ClassPathResource("applicationContext.xml");  
+        BeanFactory factory=new XmlBeanFactory(r);  
+          
+        Employee e=(Employee)factory.getBean("obj");  
+        s.display();  
+          
+    }  
+}  
+Output:20 Arun ghaziabad
+
+
+ using constructor injection example :
+
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+                http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+<bean id="e" class="com.javatpoint.Employee">  
+<constructor-arg value="10" type="int"></constructor-arg>  
+</bean>  
+  
+</beans>  
+
+
+
+
