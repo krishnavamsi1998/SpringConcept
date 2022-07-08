@@ -19,7 +19,7 @@ we can inject reference varaiables by property tag
 
 ex:
 
-<property name="referenceVariableName" ref="someName"/>
+<property name="referenceVariableName" ref="classbeanId"/>
 
 
 using constructor injection:
