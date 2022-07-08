@@ -15,6 +15,13 @@ ex:
 
 <property name="studentid" value="vamsi"/>
 
+we can inject reference varaiables by property tag
+
+ex:
+
+<property name="referenceVariableName" ref="someName"/>
+
+
 using constructor injection:
 
 instead of setter method , we can use costructor so that spring can use this constructor
