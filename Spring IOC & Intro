@@ -1,0 +1,93 @@
+
+Spring creates objects for you , manages objects for you and take cares of all the
+configuration 
+
+so that programmer can concentrate on the business logic instead of handling 
+all the configuration
+
+how do spring manage or create objects ?
+
+There something called config file in which you specify the classes for which the 
+objects need to be created , spring reads this config file (its an XML file) and create objects for them and store in IOC Container (Inversion Of Control)
+
+*IOC :
+
+The control is taken by the framework from the developer to manage or configure object or manage dependencies etc
+
+
+
+->it manages the life cycle of beans i.e creation , destruction etc 
+
+What is bean ?
+
+The objects that IOC container creates and manages is called bean , using getBean(className) , you can actually get the object you want 
+
+
+
+How many types of IOC container ?
+
+2 types:
+
+1.Bean Factory
+2.Application Context
+
+which one should you use ?
+
+Application context , since its has more features than Bean Factory
+
+Difference between  Bean Factory and Application Context?
+
+Bean factory is Lazy loading means Bean Factory loads beans on-demand,
+Application Context is Eager loading means Application Context loads beans at start up
+
+
+They both are interfaces 
+
+
+ClassPathXMLApplicationContext implements ApplicationContext 
+
+
+Use Interface reference for best practice 
+
+ex:
+
+Interface sim
+{
+	void call();
+}
+
+class jio implements sim{
+
+	@override
+	void call(){
+
+	sysout("calling using jio")
+
+	}
+}
+
+class airtel implements sim{
+
+	@override
+	void call(){
+
+	sysout("calling using airtel")
+
+	}
+}
+
+
+class Main
+{
+	main()
+{
+	sim obj=new airtel();
+	obj.call(); //op: calling using airtel
+}
+}
+
+still we are making some changes to source code if we want jio implementation 
+class
+
+
+
