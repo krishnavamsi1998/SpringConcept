@@ -1,0 +1,13 @@
+BeanCreationException : occurs when spring is unable to create a bean
+
+NotWritablePropertyException : occurs when spring is not able to set the literal
+values using setter dependency injection  
+
+NoSuchBeanDefinitionException : If the bean of type ClassName i.e class is not there then Spring will throw NoSuchBeanDefinitionException. 
+
+this can be avoided by using 
+
+@Autowired(required = false)
+private Person person;
+
+IO Exceptions : when a resource like a file is not found or deleted
