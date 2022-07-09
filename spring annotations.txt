@@ -1,0 +1,5 @@
+@autowired - inject the dependency
+@Component is an annotation that allows Spring to automatically detect our custom beans
+@Configuration - indicates that this class is like a configuration class which helps to find out the beans that are need to be created
+
+@ComponentScan - searches the specified package for classes which are annotated with @Component
