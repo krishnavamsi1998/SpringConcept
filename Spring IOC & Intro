@@ -31,6 +31,8 @@ How many types of IOC container ?
 
 1.Bean Factory
 2.Application Context
+2.1 classPathXMLApplicationContext
+2.2 AnnotationConfigApplicationContext
 
 which one should you use ?
 
