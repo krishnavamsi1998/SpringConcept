@@ -1,0 +1,20 @@
+Aspect Oriented Programming (AOP) is used to increase modularity by cross-cutting concerns.
+
+A cross-cutting concern is a concern that can affect the whole application and should be centralized in one location in code as possible, such as transaction management, authentication, logging, security etc.
+
+AOP is basically managing these cross cutting concerns
+
+Spring AspectJ AOP implementation provides many annotations:
+
+@Aspect declares the class as aspect.
+@Pointcut declares the pointcut expression.
+
+@Before declares the before advice. It is applied before calling the actual method.
+@After declares the after advice. It is applied after calling the actual method and before returning result.
+@AfterReturning declares the after returning advice. It is applied after calling the actual method and before returning result. But you can get the result value in the advice.
+@Around declares the around advice. It is applied before and after calling the actual method.
+@AfterThrowing declares the throws advice. It is applied if actual method throws exception.
+
+ex: refer https://youtu.be/xdl1b97GANk
+
+
