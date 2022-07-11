@@ -1,0 +1,29 @@
+Maven is a powerful project management tool or build tool 
+
+There are many problems that we face during the project development. They are discussed below:
+
+1) Adding set of Jars in each project: In case of struts, spring, hibernate frameworks, we need to add set of jar files in each project. It must include all the dependencies of jars also.
+
+2) Creating the right project structure: We must create the right project structure in servlet, struts etc, otherwise it will not be executed.
+
+3) Building and Deploying the project: We must have to build and deploy the project so that it may work.
+
+Maven simplifies the above mentioned problems. It does mainly following tasks.
+
+It makes a project easy to build
+It provides uniform build process (maven project can be shared by all the maven projects)
+It provides project information (log document, cross referenced sources, mailing list, dependency list, unit test reports etc.)
+It is easy to migrate for new features of Maven
+
+A build tool takes care of everything for building a process. It does following:
+
+Generates source code (if auto-generated code is used)
+Generates documentation from source code
+Compiles source code
+Packages compiled code into JAR of ZIP file
+Installs the packaged code in local repository, server repository, or central repository
+
+
+
+
+
