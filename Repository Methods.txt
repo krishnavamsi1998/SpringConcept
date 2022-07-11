@@ -1,0 +1,33 @@
+
+public interface CrudRepository<T, ID> extends Repository<T, ID> {
+
+  <S extends T> S save(S entity);      
+
+  Optional<T> findById(ID primaryKey); 
+
+  Iterable<T> findAll();               
+
+  long count();                        
+
+  void delete(T entity);               
+
+  boolean existsById(ID primaryKey);   
+
+  // … more functionality omitted.
+}
+
+Saves the given entity.
+Returns the entity identified by the given ID.
+Returns all entities.
+Returns the number of entities.
+Deletes the given entity.
+Indicates whether an entity with the given ID exists.
+
+public interface PagingAndSortingRepository<T, ID> extends CrudRepository<T, ID> {
+
+  Iterable<T> findAll(Sort sort);
+
+  Page<T> findAll(Pageable pageable);
+}
+
+
