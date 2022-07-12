@@ -1,0 +1,23 @@
+What is the in-memory database
+
+In-memory database relies on system memory as oppose to disk space for storage of data. Because memory access is faster than disk access. We use the in-memory database when we do not need to persist the data. The in-memory database is an embedded database. The in-memory databases are volatile, by default, and all stored data loss when we restart the application.
+
+The widely used in-memory databases are H2, HSQLDB (HyperSQL Database), and Apache Derby. It creates the configuration automatically.
+
+Persistence vs. In-memory Database
+The persistent database persists the data in physical memory. The data will be available even if the database server is bounced. Some popular persistence databases are Oracle, MySQL, Postgres, etc.
+
+In the case of the in-memory database, data store in the system memory. It lost the data when the program is closed. It is helpful for POCs (Proof of Concepts), not for a production application. The widely used in-memory database is H2.
+
+
+What is the H2 Database
+H2 is an embedded, open-source, and in-memory database. It is a relational database management system written in Java. It is a client/server application. It is generally used in unit testing. It stores data in memory, not persist the data on disk.
+
+Advantages
+
+Zero configuration
+It is easy to use.
+It is lightweight and fast.
+It provides simple Configuration to switch between a real database and in-memory database.
+It supports standard SQL and JDBC API.
+It provides a web console to maintain in the database.
