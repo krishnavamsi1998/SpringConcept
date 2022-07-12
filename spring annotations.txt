@@ -1,5 +1,111 @@
 @autowired - inject the dependency
-@Component is an annotation that allows Spring to automatically detect our custom beans
+
+@Component - is an annotation that allows Spring to automatically detect our custom beans , basically decalring a bean 
+
 @Configuration - indicates that this class is like a configuration class which helps to find out the beans that are need to be created
 
 @ComponentScan - searches the specified package for classes which are annotated with @Component
+
+@Bean- is a method level annotation and name of the method serves as the bean name
+
+ex:
+@Configuration
+public class AppConfig {
+    @Bean
+    public TransferService transferService() {
+        return new TransferServiceImpl();
+    }
+}
+
+so spring frames it as:
+
+<beans>
+    <bean name="transferService" class="com.acme.TransferServiceImpl"/>
+</beans>
+
+
+@bean 				@component
+1.Method level 			1.class level
+2.work only when a class is also	2.works without @configuration 
+annotated with @configuration
+
+-spring data jpa annotations 
+
+@Entity : it is specified above the class and creates a table in database
+@Table(name="tableName") : to alter the table name or to put some constriants like unique columns etc
+@Id : refers to primary key
+@Column(name="columnName") : to specify custom column name or to put some constraints 
+
+@SequenceGenerator : to auto increment a particular column such as studentID etc 
+
+@GeneratedValue : post specifying @SequenceGenerator
+
+
+@Repository : to mark the interface as repository
+
+
+@Builder :
+
+we want to use a builder to create instances of our class.
+
+The first and only step is to add the annotation to the class declaration:
+
+@Getter
+@Builder
+public class Widget {
+    private final String name;
+    private final int id;
+}
+
+Widget testWidget = Widget.builder()
+  .name("foo")
+  .id(1)
+  .build();
+
+assertThat(testWidget.getName())
+  .isEqualTo("foo");
+assertThat(testWidget.getId())
+  .isEqualTo(1);
+
+@Query : pass JPQL query above the custom method
+
+@Query(value="sql query" , nativeQuery=true)
+
+The @Modifying annotation is used to enhance the @Query annotation so that we can execute not only SELECT queries, but also INSERT, UPDATE, DELETE, and even DDL queries.
+
+ Result of NOT Using the @Modifying Annotation
+
+@Query("delete User u where u.active = false")
+int deleteDeactivatedUsersWithNoModifyingAnnotation();
+Notice the missing annotation.
+
+When we execute the above method, we get an InvalidDataAccessApiUsage exception:
+
+org.springframework.dao.InvalidDataAccessApiUsageException: org.hibernate.hql.internal.QueryExecutionRequestException: 
+Not supported for DML operations [delete com.baeldung.boot.domain.User u where u.active = false]
+(...)
+
+On whichever method you declare @Transactional the boundary of transaction starts and boundary ends when method completes.
+
+Entity relationships often depend on the existence of another entity, for example the Person–Address relationship. Without the Person, the Address entity doesn't have any meaning of its own. When we delete the Person entity, our Address entity should also get deleted.
+
+Cascading is the way to achieve this. When we perform some action on the target entity, the same action will be applied to the associated entity.
+
+ex:
+
+ALL
+PERSIST
+MERGE
+REMOVE
+REFRESH
+DETACH
+
+FETCH TYPE=LAZY : fetch only specific class
+
+FETCH TYPE=EAGER : fetch all the relationship classes associated with the 
+specified class
+ 
+
+
+
+
