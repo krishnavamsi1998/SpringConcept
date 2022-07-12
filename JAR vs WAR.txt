@@ -1,0 +1,5 @@
+A JAR file extension is .jar and is created with jar command from command prompt (like javac command is executed). Generally, a JAR file contains Java related resources like libraries, classes etc.JAR file is like winzip file except that Jar files are platform independent.
+
+A WAR file is simply a JAR file but contains only Web related Java files like Servlets, JSP, HTML.
+
+To execute a WAR file, a Web server or Web container is required, for example, Tomcat or Weblogic or Websphere. To execute a JAR file, simple JDK is enough.
