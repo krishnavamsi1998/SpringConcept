@@ -1,0 +1,8 @@
+The JPQL (Java Persistence Query Language) is an object-oriented query language which is used to perform database operations on persistent entities. Instead of database table, JPQL uses entity object model to operate the SQL queries. Here, the role of JPA is to transform JPQL into SQL. Thus, it provides an easy platform for developers to handle SQL tasks.
+
+JPQL is an extension of Entity JavaBeans Query Language (EJBQL), adding the following important features to it: -
+
+It can perform join operations.
+It can update and delete data in a bulk.
+It can perform aggregate function with sorting and grouping clauses.
+Single and multiple value result types.
