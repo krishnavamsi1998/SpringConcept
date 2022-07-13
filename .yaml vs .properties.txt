@@ -1,0 +1,32 @@
+YAML is a human-friendly notation used in configuration files. Why would we prefer this data serialization over the properties file in Spring Boot? Besides readability and reduction of repetition, YAML is the perfect language to write Configuration as Code for the deployments.
+
+YAML stands for a recursive acronym for “YAML Ain't Markup Language“. It provides the following characteristics:
+
+More clarity and human-friendliness
+Perfect for hierarchical configuration data
+It supports enhance capabilities such as maps, lists, and scalar types
+Those capabilities make YAML the perfect companion for Spring configuration files.  A word of caution here for those starting out with YAML: writing it can be a bit tedious at the beginning due to its indentation rules.
+
+Reduction of Repetition and Readability
+
+ex:
+
+application.properties
+
+spring.datasource.url=jdbc:mysql://localhost:3306/javadevjournal
+spring.datasource.username=javadevjournal
+spring.datasource.password=ThePassword
+spring.jpa.hibernate.ddl-auto=update
+
+application.yml
+
+spring:
+  datasource:
+    username: javadevjournal
+    url: jdbc:mysql://localhost:3306/javadevjournal
+    password: ThePassword
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
