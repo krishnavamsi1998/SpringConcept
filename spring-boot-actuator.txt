@@ -1,0 +1,8 @@
+monitors the health of our api's
+
+Monitoring our app, gathering metrics, understanding traffic, or the state of our database become trivial with this dependency.
+
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+</dependency>
