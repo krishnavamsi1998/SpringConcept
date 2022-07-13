@@ -1,0 +1,4 @@
+default web server in spring boot is tomcat web server , you can also change this
+to other web severs like jetty , undertow etc
+
+default port is 8080
