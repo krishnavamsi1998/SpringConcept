@@ -1,0 +1,45 @@
+
+A good logging infrastructure is necessary for any software project as it not only helps in understanding what’s going on with the application but also to trace any unusual incident or error present in the project
+
+ex :
+
+// Rest Controller to print various log level messages
+package com.log.controller;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class LogController {
+
+	// creating a logger
+	Logger logger
+		= LoggerFactory.getLogger(LogController.class);
+
+	@RequestMapping("/log") public String log()
+	{
+		// Logging various log level messages
+		logger.trace("Log level: TRACE");
+		logger.info("Log level: INFO");
+		logger.debug("Log level: DEBUG");
+		logger.error("Log level: ERROR");
+		logger.warn("Log level: WARN");
+
+		return "Hey! You can check the output in the logs";
+	}
+}
+
+
+Default Logging With No Configurations
+Spring boot allows us to see the logs in the console even if we do not provide any specific configuration for it. This is because spring boot uses Logback for its default logging. Spring boot’s internal logging provider is Apache Commons which provides support for Java Util Logging ,Log4j2, and Logback. Hence Apache Commons had to be manually imported until spring boot 1.x. However, since spring boot 2.x, it is downloaded transitively. To be more specific, Spring boot starters such as spring-boot-starter-web imports spring-boot-starter-logging which automatically pulls in Logback. 
+
+Logging to a file
+
+Spring boot only logs to the console by default. In order to log into a file, the following properties need to be added to the application.properties file:
+
+logging.file.path=logs/
+
+logging.file.name=logs/application.log
+
