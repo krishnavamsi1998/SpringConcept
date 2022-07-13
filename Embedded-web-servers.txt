@@ -1,0 +1,30 @@
+Each Spring Boot web application includes an embedded web server. This feature leads to a number of how-to questions, including how to change the embedded server and how to configure the embedded server. This section answers those questions.
+
+Use Another Web Server
+Many Spring Boot starters include default embedded containers.
+
+For servlet stack applications, the spring-boot-starter-web includes Tomcat by including spring-boot-starter-tomcat, but you can use spring-boot-starter-jetty or spring-boot-starter-undertow instead.
+For reactive stack applications, the spring-boot-starter-webflux includes Reactor Netty by including spring-boot-starter-reactor-netty, but you can use spring-boot-starter-tomcat, spring-boot-starter-jetty, or spring-boot-starter-undertow instead.
+When switching to a different HTTP server, you need to exclude the default dependencies in addition to including the one you need. Spring Boot provides separate starters for HTTP servers to help make this process as easy as possible.
+
+The following Maven example shows how to exclude Tomcat and include Jetty for Spring MVC:
+
+<properties>
+	<servlet-api.version>3.1.0</servlet-api.version>
+</properties>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+	<exclusions>
+		<!-- Exclude the Tomcat dependency -->
+		<exclusion>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+<!-- Use Jetty instead -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
