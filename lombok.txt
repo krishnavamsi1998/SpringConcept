@@ -1,0 +1,9 @@
+Project Lombok is a Java library tool that generates code for minimizing boilerplate code. The library replaces boilerplate code with easy-to-use annotations.
+
+ex:
+
+@Getter
+@Setter
+@NoArgsConstructor, @AllArgsConstructor.
+@Data.
+@NotNull.
