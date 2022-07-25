@@ -1,0 +1,71 @@
+
+    The @Qualifier annotation is used to resolve the autowiring conflict, when there are multiple beans of same type. This annotation is used with @Autowired annotation.
+
+      The @Qualifier annotation can be used on any class annotated with @Component or 
+on method annotated with @Bean. This annotation can also be applied on constructor 
+arguments or method parameters.
+  
+     If two or more beans of same type declared in the configuration file then autowiring conflict will occur if you use only @Autowired, will throw NoSuchBeanDefinitionException.
+
+See below example,
+
+Student.java,
+
+package com.test;
+public class Student {
+
+     private String name;
+
+     public String getName() {
+          return name;
+     }
+     public void setName(String name) {
+          this.name = name;
+     }
+}
+
+Bean.xml
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+<bean
+class ="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+        
+  <bean id="school" class="com.test.School" >
+
+  <bean id="student1" class="com.test.Student" >
+       <property name="name" value="Mahesh" />
+  </bean>
+
+  <bean id="student2" class="com.test.Student" >
+       <property name="name" value="Rajesh" />
+  </bean>
+
+</beans>
+
+School.java,
+
+package com.test;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+public class School{
+
+     @Autowired
+     private Student student;
+ 
+     // other property and setter and getters
+}
+
+If you run the above code, it will throw NoSuchBeanDefinitionException  as below,
+
+Caused by: org.springframework.beans.factory.NoSuchBeanDefinitionException:
+ No unique bean of type [com.test.Student] is defined:
+  expected single matching bean but found 2: [student1, student2]
+
+Because Spring doesn't know which bean should autowire.
+
+To avoid this confusion or exception, should use @Qualifier annotation.
