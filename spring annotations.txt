@@ -104,7 +104,99 @@ FETCH TYPE=LAZY : fetch only specific class
 
 FETCH TYPE=EAGER : fetch all the relationship classes associated with the 
 specified class
+
+Spring Boot
+
+@SpringBootApplication 
+
+Many Spring Boot developers like their apps to use auto-configuration, component scan and be able to define extra configuration on their "application class". A single @SpringBootApplication annotation can be used to enable those three features, that is:
+
+@EnableAutoConfiguration: enable Spring Boot’s auto-configuration mechanism
+@ComponentScan: enable @Component scan on the package where the application is located (see the best practices)
+@Configuration: allow to register extra beans in the context or import additional configuration classes
  
+example :
+
+package com.example.myapplication;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+@Controller
+
+The @Controller annotation indicates that a particular class serves the role of a controller. Spring does not require you to extend any controller base class or reference the Servlet API.
+
+@RestController= @Controller + @ResponseBody
+
+Spring 4.0 introduced the @RestController annotation in order to simplify the creation of RESTful web services. It's a convenient annotation that combines @Controller and @ResponseBody, which eliminates the need to annotate every request handling method of the controller class with the @ResponseBody annotation.
+
+@RequestMapping- used to map web requests onto specific handler classes and/or handler methods
+
+similarily we have
+
+@GetMapping
+@PostMapping
+@DeleteMapping etc
+ 
+@RequestBody annotation is applicable to handler methods of Spring controllers. This annotation indicates that Spring should deserialize a request body into an object. This object is passed as a handler method parameter.
+
+@PathVariable annotation can be used to handle template variables in the request URI mapping, and set them as method parameters.
+
+It is enclosed with {flowerBracket}
+
+ex :
+@GetMapping("/api/employeeswithvariable/{id}")
+
+Multiple Path Variables
+
+@GetMapping("/api/employees/{id}/{name}")
+@ResponseBody
+public String getEmployeesByIdAndName(@PathVariable String id, @PathVariable String name) {
+    return "ID: " + id + ", name: " + name;
+}
+
+@NotNull
+
+CharSequence, Collection, Map or Array object cannot be null, however can be empty.
+
+@NotEmpty
+
+The CharSequence, Collection, Map or Array object cannot be null and not empty (size > 0).
+
+@NotBlank
+
+The string is not null and the length is greater than zero.
+
+Here are the examples:
+
+String test = null;
+@NotNull: false
+@NotEmpty: false
+@NotBlank: false
+
+String test = "";
+@NotNull: true
+@NotEmpty: false
+@NotBlank: false
+
+String test = " ";
+@NotNull: true
+@NotEmpty: true
+@NotBlank: false
+
+String name = "Some text";
+@NotNull: true
+@NotEmpty: true
+@NotBlank: true
 
 
 
