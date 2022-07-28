@@ -1,0 +1,2 @@
+PUT : Entire resource gets updated 
+PATCh : Only specificied attributes of resource gets updated 
