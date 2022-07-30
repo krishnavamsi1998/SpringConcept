@@ -270,6 +270,13 @@ Because Spring doesn't know which bean should autowire.
 
 To avoid this confusion or exception, should use @Qualifier annotation.
 
+Exception :
+
+@ControllerAdvice
+
+A controller advice allows you to use exactly the same exception handling techniques 
+but apply them across the whole application, not just to an individual controller. 
+
 
 
 
